@@ -7,19 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             const nameInput = this.querySelector('input[type="text"]');
-            const emailInput = this.querySelector('input[type="email"]');
             const submitBtn = this.querySelector('.submit-btn');
             
-            if(!nameInput || !emailInput) return; // Error handling
+            if(!nameInput || !submitBtn) return;
 
             const name = nameInput.value.trim();
-            const email = emailInput.value.trim();
             const originalBtnText = submitBtn.innerText;
-
-            if (name === "" || email === "") {
-                alert("Please fill in all required fields.");
-                return;
-            }
 
             // Loading State
             submitBtn.innerText = "Processing...";
@@ -27,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.style.opacity = "0.7";
 
             setTimeout(() => {
-                alert("Thank you " + name + "! Your message has been sent.");
+                alert("Thank you " + name + "! Your quotation request has been sent to KHUSHI Construction.");
                 this.reset();
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
@@ -37,51 +30,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. SMOOTH SCROLL ---
-    const ctaBtn = document.querySelector('.cta-btn');
-    if (ctaBtn) {
-        ctaBtn.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if(targetId.startsWith("#")) {
-                e.preventDefault();
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
-    }
+    });
 
-    // --- 3. PREMIUM DARK MODE SWITCH (FIXED) ---
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    // --- 3. PREMIUM DARK MODE (LOCALSTORAGE) ---
+    const toggleSwitch = document.querySelector('#checkbox'); // Matches HTML ID
     const currentTheme = localStorage.getItem('theme');
 
-    // Saved preference check karein
-    if (currentTheme === 'dark-mode') {
+    if (currentTheme === 'dark') {
         document.body.classList.add('dark-mode');
         if (toggleSwitch) toggleSwitch.checked = true;
     }
 
     if (toggleSwitch) {
-        toggleSwitch.addEventListener('change', function(e) {
-            if (e.target.checked) {
+        toggleSwitch.addEventListener('change', function() {
+            if (this.checked) {
                 document.body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark-mode'); // Save preference
+                localStorage.setItem('theme', 'dark');
             } else {
                 document.body.classList.remove('dark-mode');
-                localStorage.setItem('theme', 'light-mode'); // Save preference
+                localStorage.setItem('theme', 'light');
             }
         });
     }
 
-    // --- 4. PASSWORD SHOW/HIDE (EYE ICON) ---
+    // --- 4. PASSWORD SHOW/HIDE (FIXED FOR WAVY DESIGN) ---
     const togglePassword = document.querySelector('#togglePassword');
     const passwordField = document.querySelector('#password');
 
     if (togglePassword && passwordField) {
         togglePassword.addEventListener('click', function () {
+            // Password type change logic
             const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordField.setAttribute('type', type);
-            this.classList.toggle('fa-eye-slash'); // Icon change
+            
+            // Icon Toggle (Slash se Eye aur Eye se Slash)
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
         });
     }
 });
