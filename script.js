@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const checkbox = document.getElementById('checkbox');
-    const togglePassword = document.getElementById('togglePassword');
-    const passwordField = document.getElementById('password');
-
-    // 1. Dark Mode Logic
+    
+    // Theme Loader
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
         if(checkbox) checkbox.checked = true;
@@ -16,7 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Password Toggle
+    // Password Toggle Logic
+    const togglePassword = document.querySelector('#togglePassword');
+    const passwordField = document.querySelector('#password');
     if (togglePassword) {
         togglePassword.addEventListener('click', function() {
             const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';

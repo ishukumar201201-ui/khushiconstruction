@@ -1,215 +1,46 @@
-/* --- 1. GLOBAL SETTINGS --- */
 :root {
-    --primary-color: #1a2a6c; /* L&T Style Blue */
-    --accent-color: #f39c12;  /* Construction Orange */
-    --bg-light: #f9f9f9;
-    --text-light: #333;
-    --bg-dark: #121212;
-    --text-dark: #f1f1f1;
+    --lt-blue: #003a70; /* Official L&T Blue shade */
+    --lt-yellow: #ffcb05; /* Official L&T Yellow shade */
+    --bg: #ffffff;
+    --text: #333333;
+    --card-bg: #f8f9fa;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background-color: var(--bg-light);
-    color: var(--text-light);
-    transition: background 0.4s, color 0.4s;
-    overflow-x: hidden;
-}
-
-/* Dark Mode Logic */
 body.dark-mode {
-    background-color: var(--bg-dark);
-    color: var(--text-dark);
+    --bg: #121212;
+    --text: #f1f1f1;
+    --card-bg: #1e1e1e;
 }
 
-/* --- 2. NAVBAR & THEME SWITCH --- */
-header {
-    background: #fff;
-    padding: 15px 10%;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica', Arial, sans-serif; }
 
-body.dark-mode header {
-    background-color: #1a1a1a;
-}
+body { background-color: var(--bg); color: var(--text); transition: 0.3s ease; }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/* Header & Nav */
+header { background: var(--bg); padding: 15px 0; border-bottom: 3px solid var(--lt-yellow); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.container { width: 85%; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 24px; font-weight: 900; color: var(--lt-blue); letter-spacing: 1px; }
+.logo span { font-weight: 300; }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 14px; text-transform: uppercase; }
 
-.logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--primary-color);
-}
+/* Dark Mode Switch */
+.switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; display: flex; align-items: center; justify-content: space-between; padding: 0 5px; }
+.slider i { font-size: 12px; color: white; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; z-index: 2; }
+input:checked + .slider { background-color: var(--lt-blue); }
+input:checked + .slider:before { transform: translateX(24px); }
 
-.logo span { color: var(--accent-color); }
+.btn-login { background: var(--lt-blue); color: white !important; padding: 8px 20px; border-radius: 2px; }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-}
+/* Hero Section */
+.hero-section { height: 80vh; background: linear-gradient(rgba(0,58,112,0.6), rgba(0,58,112,0.6)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070') no-repeat center/cover; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+.hero-content h1 { font-size: 50px; font-weight: 800; margin-bottom: 20px; }
+.btn-primary { background: var(--lt-yellow); color: #000; padding: 15px 35px; text-decoration: none; font-weight: bold; border-radius: 2px; display: inline-block; margin: 10px; }
+.btn-secondary { border: 2px solid white; color: white; padding: 13px 35px; text-decoration: none; font-weight: bold; border-radius: 2px; display: inline-block; margin: 10px; }
 
-.nav-links li { margin-left: 25px; }
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-light);
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-body.dark-mode .nav-links a { color: var(--text-dark); }
-
-/* Custom Theme Switch */
-.theme-switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-    margin-right: 15px;
-}
-
-.theme-switch input { display: none; }
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 24px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider { background-color: var(--accent-color); }
-input:checked + .slider:before { transform: translateX(26px); }
-
-/* --- 3. HERO SECTION FIX --- */
-.hero {
-    height: 90vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero.png') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-}
-
-.hero h1 { font-size: 55px; margin-bottom: 20px; }
-.hero p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
-
-/* Buttons on Hero Image */
-.hero-btns {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-.cta-primary {
-    background-color: var(--accent-color);
-    color: #fff;
-    padding: 15px 35px;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 5px;
-    transition: 0.3s;
-    text-transform: uppercase;
-}
-
-.cta-secondary {
-    background-color: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    padding: 15px 35px;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 5px;
-    transition: 0.3s;
-    text-transform: uppercase;
-}
-
-.cta-primary:hover, .cta-secondary:hover {
-    background-color: #fff;
-    color: var(--primary-color);
-    border-color: #fff;
-}
-
-/* --- 4. PREMIUM LOGIN PAGE (FIXED GLASS EFFECT) --- */
-.wavy-login-body {
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-}
-
-.ultra-glass-box {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 40px;
-    border-radius: 20px;
-    width: 400px;
-    color: white;
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-
-.login-brand-minimal h2 { margin-bottom: 25px; }
-
-.input-block {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.input-block label { display: block; margin-bottom: 8px; font-size: 0.9rem; }
-.input-block input {
-    width: 100%;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    outline: none;
-}
-
-.wavy-btn-signin {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.wavy-btn-signin:hover { background-color: #fff; color: var(--primary-color); }
-
-.back-link { display: block; margin-top: 20px; color: #fff; text-decoration: none; font-size: 0.9rem; opacity: 0.8; }
+/* Stats Bar */
+.stats-container { display: flex; justify-content: space-around; padding: 50px 10%; background: var(--card-bg); }
+.stat-box h2 { color: var(--lt-blue); font-size: 35px; }

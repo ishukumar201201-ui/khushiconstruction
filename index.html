@@ -3,46 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KHUSHI Construction | Engineering & Construction</title>
+    <title>KHUSHI Construction | Engineering Excellence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="container">
             <div class="logo">KHUSHI <span>CONSTRUCTION</span></div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li class="nav-right">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider"></div>
-                    </label>
-                    <a href="login.html" class="login-btn">Client Login</a>
+                    <div class="mode-toggle">
+                        <label class="switch" for="checkbox">
+                            <input type="checkbox" id="checkbox" />
+                            <div class="slider round">
+                                <i class="fas fa-moon"></i>
+                                <i class="fas fa-sun"></i>
+                            </div>
+                        </label>
+                    </div>
+                    <a href="login.html" class="btn-login">Client Login</a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>BUILDING THE FUTURE</h1>
-            <p>Expert Engineering Solutions for Modern Infrastructure.</p>
-            <div class="hero-btns">
-                <a href="#services" class="cta-primary">Our Projects</a>
-                <a href="#contact" class="cta-secondary">Get a Quote</a>
+    <main>
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>BUILDING THE FUTURE</h1>
+                <p>Expert Engineering Solutions for Modern Infrastructure</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn-primary">Our Projects</a>
+                    <a href="#contact" class="btn-secondary">Get a Quote</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="stats" class="stats-bar">
-        <div class="stat"><span>25+</span><p>Years Experience</p></div>
-        <div class="stat"><span>500+</span><p>Projects Done</p></div>
-        <div class="stat"><span>100%</span><p>Safety Record</p></div>
-    </section>
+        <section class="stats-container">
+            <div class="stat-box"><h2>25+</h2><p>Years Experience</p></div>
+            <div class="stat-box"><h2>500+</h2><p>Projects Done</p></div>
+            <div class="stat-box"><h2>100%</h2><p>Safety Record</p></div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
