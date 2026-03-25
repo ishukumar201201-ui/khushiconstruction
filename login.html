@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Login | KHUSHI Construction</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="login-page-body">
@@ -15,7 +15,7 @@
                 <h2>KHUSHI <span>Construction</span></h2>
             </div>
             
-            <form class="premium-form">
+            <form class="premium-form" id="loginForm">
                 <h3>Welcome Back</h3>
                 <p>Please enter your details to login</p>
 
@@ -28,7 +28,7 @@
                 <div class="input-field">
                     <input type="password" id="password" required>
                     <label for="password">Password</label>
-                    <i class="fas fa-eye" id="togglePassword" style="cursor: pointer;"></i>
+                    <i class="fas fa-eye" id="togglePassword"></i>
                 </div>
 
                 <div class="form-options">
@@ -48,6 +48,7 @@
             </a>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
