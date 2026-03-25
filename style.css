@@ -380,8 +380,6 @@ footer {
         font-size: 24px !important; /* Mobile par heading choti karega */
     }
 
-
-/* Line 381 ke baad ye add karein */
     .nav-links li a {
         font-size: 16px !important;
         font-weight: 800 !important;
@@ -394,4 +392,4 @@ footer {
         color: #ff9800 !important; /* Orange on hover */
     }
 
-} /* Ye aapki Line 382 hai jo ab niche shift ho jayegi */
+} 
