@@ -333,3 +333,22 @@ footer {
     70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
+
+
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    /* Jahan aapne stats rakhe hain us container ki class yahan likhein */
+    .stats-container, .row, .counter-section { 
+        display: flex !important;
+        flex-wrap: wrap !important; /* Isse 100 niche aa jayega */
+        justify-content: center !important;
+        gap: 20px;
+    }
+
+    .stat-item, .col-md-3 {
+        flex: 1 1 40% !important; /* Ek line mein 2 items dikhayega */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
